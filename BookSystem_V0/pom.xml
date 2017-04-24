@@ -104,18 +104,6 @@
       <artifactId>spring-webmvc</artifactId>
       <version>4.1.7.RELEASE</version>
     </dependency>
-    <!-- 4)Spring test -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-test</artifactId>
-      <version>4.1.7.RELEASE</version>
-    </dependency>
-    <!-- Map工具类 -->
-    <dependency>
-      <groupId>commons-collections</groupId>
-      <artifactId>commons-collections</artifactId>
-      <version>3.2</version>
-    </dependency>
   </dependencies>
   <build>
     <finalName>BookSystem_V0</finalName>
@@ -127,11 +115,6 @@
           <source>1.6</source>
           <target>1.6</target>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-maven-plugin</artifactId>
-        <version>9.2.1.v20140609</version>
       </plugin>
     </plugins>
   </build>
