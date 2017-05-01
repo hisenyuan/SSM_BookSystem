@@ -13,8 +13,13 @@ date: 17-4-25 下午10:06
 
 搭建过程：
 ---
+一般idea创建工程的过程
 
-目录文件夹如下：
+打开idea ---> File  ---> new ---> project  ---> maven  ---> 
+
+create from archetype ---> maven-archetype-webapp ---> 接下来一般默认即可
+
+首先创建如下的目录结构即可：
 ```
 ├── java
 │   └── com
@@ -47,8 +52,6 @@ date: 17-4-25 下午10:06
         │   └── list.jsp
         └── web.xml
 ```
-
-首先创建上图的文件夹结构即可
 
 第一步：添加Spring、Spring MVC、Mybatis的依赖
 ---
