@@ -1,13 +1,13 @@
 # SSM_BookSystem SSM框架基础
-SSM_BookSystem   -   spring+spring mvc+mybatis+maven+idea
-
 SSM_BookSystem ---> Hello CRUD
 
-本项目之包含基础的CRUD
+说明：本项目之包含基础的CRUD
 
-后期项目如果增加东西，我会新建module
+日期：2017-05-01 22:25:37
 
-date: 17-4-25 下午10:06
+作者：hisenyuan
+
+网站：<a href="hisen.me" target="_blank">hisen.me</a>
 
 ---
 
@@ -18,6 +18,8 @@ date: 17-4-25 下午10:06
 打开idea ---> File  ---> new ---> project  ---> maven  ---> 
 
 create from archetype ---> maven-archetype-webapp ---> 接下来一般默认即可
+
+最后在main目录下新建java文件夹，并且mark as source root。
 
 首先创建如下的目录结构即可：
 ```
@@ -143,3 +145,45 @@ logback配置比log4j要简单点，功能类似
   </root>
 </configuration>
 ```
+第六步：创建DAO、entity
+---
+如下两个文件：BookDao.java、Book.java
+```
+│   └── com
+│       └── hisen
+│           ├── dao
+│           │   └── BookDao.java
+│           ├── entity
+│           │   └── Book.java
+```
+详细内容：<a href="https://github.com/hisen-yuan/SSM_BookSystem/blob/master/BookSystem_V0/src/main/java/com/hisen/dao/BookDao.java" target="_blank">BookDao.java</a>
+
+详细内容：<a href="https://github.com/hisen-yuan/SSM_BookSystem/blob/master/BookSystem_V0/src/main/java/com/hisen/entity/Book.java" target="_blank">Book.java</a>
+
+第七步：创建mybatis mapper文件
+---
+在resources/mapper/目录下创建：<a href="https://github.com/hisen-yuan/SSM_BookSystem/blob/master/BookSystem_V0/src/main/resources/mapper/BookMapper.xml" target="_blank">resources/mapper/BookMapper.xml</a>
+
+在mapper文件中需要用到**第六步**的内容
+
+第八步：创建service
+---
+```
+├── service
+│   ├── BookService.java
+│   └── impl
+│       └── BookServiceImpl.java
+```
+具体内容：<a href="https://github.com/hisen-yuan/SSM_BookSystem/tree/master/BookSystem_V0/src/main/java/com/hisen/service" target="_blank">service</a>
+
+第九步：创建controller
+---
+```
+└── web
+    └── BookController.java
+```
+具体内容：<a href="https://github.com/hisen-yuan/SSM_BookSystem/blob/master/BookSystem_V0/src/main/java/com/hisen/web/BookController.java" target="_blank">BookController.java</a>
+
+第十步：创建jsp页面以及配置web.xml
+---
+具体内容：<a href="https://github.com/hisen-yuan/SSM_BookSystem/tree/master/BookSystem_V0/src/main/webapp" target="_blank">查看具体内容</a>
