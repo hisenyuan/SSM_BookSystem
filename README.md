@@ -64,7 +64,11 @@ create from archetype ---> maven-archetype-webapp ---> 接下来一般默认即�
 
 第二步：添加数据库配置文件
 ---
-在/resources目录下新建文件：jdbc.properties
+```
+├── resources
+│   ├── jdbc.properties
+```
+创建数据库配置文件，内容如下
 ```
 jdbc.driver=com.mysql.jdbc.Driver
 jdbc.url=jdbc:mysql://localhost:3306/booksystem?useUnicode=true&characterEncoding=utf8
@@ -96,6 +100,10 @@ CREATE TABLE `book` (
 ```
 第三步：添加mybatis配置文件
 ---
+```
+├── resources
+│   ├── mybatis-config.xml
+```
 在resources目录下新建文件：mybatis-config.xml
 
 内容如下：
@@ -120,16 +128,20 @@ CREATE TABLE `book` (
 ---
 在resources/spring目录下新建三个文件：
 ```
-spring-dao.xml
-spring-service.xml
-spring-web.xml
+│   └── spring
+│       ├── spring-dao.xml
+│       ├── spring-service.xml
+│       └── spring-web.xml
 ```
 详细内容详见：<a href="https://github.com/hisen-yuan/SSM_BookSystem/tree/master/BookSystem_V0/src/main/resources/spring" target="_blank">resources/spring/</a>
 
 第五步：添加logback配置文件
 ---
 logback配置比log4j要简单点，功能类似
-
+```
+├── resources
+│   ├── logback.xml
+```
 在resources文件夹下新建文件：logback.xml
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -186,4 +198,13 @@ logback配置比log4j要简单点，功能类似
 
 第十步：创建jsp页面以及配置web.xml
 ---
+```
+└── webapp
+    ├── index.jsp
+    └── WEB-INF
+        ├── jsp
+        │   ├── detail.jsp
+        │   └── list.jsp
+        └── web.xml
+```
 具体内容：<a href="https://github.com/hisen-yuan/SSM_BookSystem/tree/master/BookSystem_V0/src/main/webapp" target="_blank">查看具体内容</a>
