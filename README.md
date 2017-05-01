@@ -7,7 +7,7 @@ SSM_BookSystem ---> Hello CRUD
 
 作者：hisenyuan
 
-网站：<a href="hisen.me" target="_blank">hisen.me</a>
+网站：<a href="http://hisen.me" target="_blank">hisen.me</a>
 
 ---
 
