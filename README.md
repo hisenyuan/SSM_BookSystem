@@ -1,7 +1,8 @@
-# SSM_BookSystem
+# SSM_BookSystem SSM框架基础
 SSM_BookSystem   -   spring+spring mvc+mybatis+maven+idea
 
-# SSM框架基础
+SSM_BookSystem ---> Hello CRUD
+
 本项目之包含基础的CRUD
 
 后期项目如果增加东西，我会新建module
@@ -10,122 +11,55 @@ date: 17-4-25 下午10:06
 
 ---
 
-SSM_BookSystem ---> Hello CRUD
----
-
 搭建过程：
 ---
 
 目录文件夹如下：
-<img src="" />
+```
+├── java
+│   └── com
+│       └── hisen
+│           ├── dao
+│           │   └── BookDao.java
+│           ├── entity
+│           │   └── Book.java
+│           ├── service
+│           │   ├── BookService.java
+│           │   └── impl
+│           │       └── BookServiceImpl.java
+│           └── web
+│               └── BookController.java
+├── resources
+│   ├── jdbc.properties
+│   ├── logback.xml
+│   ├── mapper
+│   │   └── BookMapper.xml
+│   ├── mybatis-config.xml
+│   └── spring
+│       ├── spring-dao.xml
+│       ├── spring-service.xml
+│       └── spring-web.xml
+└── webapp
+    ├── index.jsp
+    └── WEB-INF
+        ├── jsp
+        │   ├── detail.jsp
+        │   └── list.jsp
+        └── web.xml
+```
 
 首先创建上图的文件夹结构即可
 
 第一步：添加Spring、Spring MVC、Mybatis的依赖
+---
 
 都配有详细的说明，这里不再重复
-```
-<dependencies>
-    <!-- 单元测试 -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-    </dependency>
-    <!-- 1.日志 -->
-    <!-- 实现slf4j接口并整合 -->
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <version>1.1.1</version>
-    </dependency>
-    <!-- 2.数据库 -->
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.37</version>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>c3p0</groupId>
-      <artifactId>c3p0</artifactId>
-      <version>0.9.1.2</version>
-    </dependency>
-    <!-- DAO: MyBatis -->
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis</artifactId>
-      <version>3.3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis-spring</artifactId>
-      <version>1.2.3</version>
-    </dependency>
-    <!-- 3.Servlet web -->
-    <dependency>
-      <groupId>taglibs</groupId>
-      <artifactId>standard</artifactId>
-      <version>1.1.2</version>
-    </dependency>
-    <dependency>
-      <groupId>jstl</groupId>
-      <artifactId>jstl</artifactId>
-      <version>1.2</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>2.5.4</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version>
-    </dependency>
-    <!-- 4.Spring -->
-    <!-- 1)Spring核心 -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
-      <version>4.1.7.RELEASE</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-beans</artifactId>
-      <version>4.1.7.RELEASE</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
-      <version>4.1.7.RELEASE</version>
-    </dependency>
-    <!-- 2)Spring DAO层 -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-jdbc</artifactId>
-      <version>4.1.7.RELEASE</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-tx</artifactId>
-      <version>4.1.7.RELEASE</version>
-    </dependency>
-    <!-- 3)Spring web -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-      <version>4.1.7.RELEASE</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-      <version>4.1.7.RELEASE</version>
-    </dependency>
-  </dependencies>
-```
 
-第二步：jdbc.properties
+详情请看<a href="https://github.com/hisen-yuan/SSM_BookSystem/blob/master/BookSystem_V0/pom.xml" target="_blank">pom.xml</a>
+
+第二步：添加数据库配置文件
+---
+在/resources目录下新建文件：jdbc.properties
 ```
 jdbc.driver=com.mysql.jdbc.Driver
 jdbc.url=jdbc:mysql://localhost:3306/booksystem?useUnicode=true&characterEncoding=utf8
@@ -136,5 +70,73 @@ jdbc.password=hisen
 
 建表语句如下：
 ```
+CREATE TABLE `book` (
+  `book_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '图书ID',
+  `name` varchar(100) NOT NULL COMMENT '图书名称',
+  `number` int(11) NOT NULL COMMENT '图书数量',
+  `detail` varchar(200) NOT NULL COMMENT '图书描述'
+  PRIMARY KEY (`book_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='图书表'
+```
+表结构如下：
+```
++---------+--------------+------+-----+---------+----------------+
+| Field   | Type         | Null | Key | Default | Extra          |
++---------+--------------+------+-----+---------+----------------+
+| book_id | bigint(20)   | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(100) | NO   |     | NULL    |                |
+| number  | int(11)      | NO   |     | NULL    |                |
+| detail  | varchar(200) | NO   |     | NULL    |                |
++---------+--------------+------+-----+---------+----------------+
+```
+第三步：添加mybatis配置文件
+---
+在resources目录下新建文件：mybatis-config.xml
 
+内容如下：
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- 配置全局属性 -->
+  <settings>
+    <!-- 使用jdbc的getGeneratedKeys获取数据库自增主键值 -->
+    <setting name="useGeneratedKeys" value="true" />
+    <!-- 使用列别名替换列名 默认:true -->
+    <setting name="useColumnLabel" value="true" />
+    <!-- 开启驼峰命名转换:Table{create_time} -> Entity{createTime} -->
+    <setting name="mapUnderscoreToCamelCase" value="true" />
+  </settings>
+</configuration>
+```
+第四步：添加Spring配置文件
+---
+在resources/spring目录下新建三个文件：
+```
+spring-dao.xml
+spring-service.xml
+spring-web.xml
+```
+详细内容详见：<a href="https://github.com/hisen-yuan/SSM_BookSystem/tree/master/BookSystem_V0/src/main/resources/spring" target="_blank">resources/spring/</a>
+
+第五步：添加logback配置文件
+---
+logback配置比log4j要简单点，功能类似
+
+在resources文件夹下新建文件：logback.xml
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration debug="true">
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  <!--开启debug日志模式，在控制台打印日志-->
+  <root level="debug">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
 ```
