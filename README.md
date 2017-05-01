@@ -1,7 +1,7 @@
 # SSM_BookSystem SSM框架基础
 SSM_BookSystem ---> Hello CRUD
 
-说明：本项目之包含基础的CRUD
+说明：本项目目前包含基础的CRUD
 
 日期：2017-05-01 22:25:37
 
