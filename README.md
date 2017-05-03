@@ -71,7 +71,7 @@ create from archetype ---> maven-archetype-webapp ---> 接下来一般默认即�
 创建数据库配置文件，内容如下
 ```
 jdbc.driver=com.mysql.jdbc.Driver
-jdbc.url=jdbc:mysql://localhost:3306/booksystem?useUnicode=true&characterEncoding=utf8
+jdbc.url=jdbc:mysql://127.0.0.1:3306/booksystem?useUnicode=true&characterEncoding=utf8
 jdbc.username=root
 jdbc.password=hisen
 ```
@@ -174,7 +174,9 @@ logback配置比log4j要简单点，功能类似
 
 创建测试类：
 
-1. 测试：addBook （由于没有预先准备数据，所以就先添加）
+1. 测试基类：查看代码<a href="https://github.com/hisen-yuan/SSM_BookSystem/blob/master/BookSystem_V0/src/test/com/hisen/test/BaseTest.java" target="_blank">BaseTest.java</a>
+2. BookDao：查看代码<a href="https://github.com/hisen-yuan/SSM_BookSystem/blob/master/BookSystem_V0/src/test/com/hisen/test/BookDaoTest.java" target="_blank">BookDaoTest.java</a>
+3. 测试：addBook （由于没有预先准备数据，所以就先添加）
 ```
 20:12:26.674 [main] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@7b7fdc8] will not be managed by Spring
 20:12:26.709 [main] DEBUG com.hisen.dao.BookDao.addBook - ==>  Preparing: INSERT INTO book(`book_id`, `name`, `number`,`detail`) VALUES(?, ?, ?, ?) 
@@ -272,7 +274,9 @@ Book{bookId=101, name='活着0', number=100, detail='描述0'}
 ```
 具体内容：<a href="https://github.com/hisen-yuan/SSM_BookSystem/tree/master/BookSystem_V0/src/main/java/com/hisen/service" target="_blank">service</a>
 
-1. 创建测试类：BookServiceImplTest （结果如下，就测试一个，其他以此类推）
+1. 创建测试类：BookServiceImplTest
+2. BookServiceImplTest：查看代码<a href="https://github.com/hisen-yuan/SSM_BookSystem/blob/master/BookSystem_V0/src/test/com/hisen/test/BookServiceImplTest.java" target="_blank">BookServiceImplTest.java</a>
+3. 测试：getById
 ```
 20:19:58.871 [main] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@37fb0bed] will not be managed by Spring
 20:19:58.885 [main] DEBUG com.hisen.dao.BookDao.queryById - ==>  Preparing: SELECT book_id, name, number, detail FROM book WHERE book_id = ? 
