@@ -295,6 +295,7 @@ Book{bookId=101, name='活着0', number=100, detail='描述0'}
 
 第十步：创建jsp页面以及配置web.xml
 ---
+页面主要使用了bootstrap
 ```
 └── webapp
     ├── index.jsp
