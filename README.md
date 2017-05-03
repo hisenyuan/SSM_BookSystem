@@ -83,7 +83,7 @@ CREATE TABLE `book` (
   `book_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '图书ID',
   `name` varchar(100) NOT NULL COMMENT '图书名称',
   `number` int(11) NOT NULL COMMENT '图书数量',
-  `detail` varchar(200) NOT NULL COMMENT '图书描述'
+  `detail` varchar(200) NOT NULL COMMENT '图书描述',
   PRIMARY KEY (`book_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='图书表'
 ```
@@ -172,6 +172,90 @@ logback配置比log4j要简单点，功能类似
 
 详细内容：<a href="https://github.com/hisen-yuan/SSM_BookSystem/blob/master/BookSystem_V0/src/main/java/com/hisen/entity/Book.java" target="_blank">Book.java</a>
 
+创建测试类：
+
+1. 测试：addBook （由于没有预先准备数据，所以就先添加）
+```
+20:12:26.674 [main] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@7b7fdc8] will not be managed by Spring
+20:12:26.709 [main] DEBUG com.hisen.dao.BookDao.addBook - ==>  Preparing: INSERT INTO book(`book_id`, `name`, `number`,`detail`) VALUES(?, ?, ?, ?) 
+20:12:26.777 [main] DEBUG com.hisen.dao.BookDao.addBook - ==> Parameters: 0(Long), 活着0(String), 100(Integer), 描述0(String)
+20:12:26.783 [main] DEBUG com.hisen.dao.BookDao.addBook - <==    Updates: 1
+20:12:26.791 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6f3187b0]
+20:12:26.792 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+20:12:26.793 [main] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@a307a8c] was not registered for synchronization because synchronization is not active
+20:12:26.793 [main] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@2b9ed6da] will not be managed by Spring
+20:12:26.793 [main] DEBUG com.hisen.dao.BookDao.addBook - ==>  Preparing: INSERT INTO book(`book_id`, `name`, `number`,`detail`) VALUES(?, ?, ?, ?) 
+20:12:26.794 [main] DEBUG com.hisen.dao.BookDao.addBook - ==> Parameters: 0(Long), 活着1(String), 101(Integer), 描述1(String)
+20:12:26.798 [main] DEBUG com.hisen.dao.BookDao.addBook - <==    Updates: 1
+20:12:26.798 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@a307a8c]
+20:12:26.798 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+20:12:26.799 [main] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4b34fff9] was not registered for synchronization because synchronization is not active
+20:12:26.799 [main] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@127a7a2e] will not be managed by Spring
+20:12:26.799 [main] DEBUG com.hisen.dao.BookDao.addBook - ==>  Preparing: INSERT INTO book(`book_id`, `name`, `number`,`detail`) VALUES(?, ?, ?, ?) 
+20:12:26.799 [main] DEBUG com.hisen.dao.BookDao.addBook - ==> Parameters: 0(Long), 活着2(String), 102(Integer), 描述2(String)
+20:12:26.804 [main] DEBUG com.hisen.dao.BookDao.addBook - <==    Updates: 1
+20:12:26.804 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4b34fff9]
+20:12:26.805 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+20:12:26.805 [main] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@518caac3] was not registered for synchronization because synchronization is not active
+20:12:26.805 [main] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@4f74980d] will not be managed by Spring
+20:12:26.805 [main] DEBUG com.hisen.dao.BookDao.addBook - ==>  Preparing: INSERT INTO book(`book_id`, `name`, `number`,`detail`) VALUES(?, ?, ?, ?) 
+20:12:26.805 [main] DEBUG com.hisen.dao.BookDao.addBook - ==> Parameters: 0(Long), 活着3(String), 103(Integer), 描述3(String)
+20:12:26.810 [main] DEBUG com.hisen.dao.BookDao.addBook - <==    Updates: 1
+20:12:26.811 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@518caac3]
+20:12:26.811 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+20:12:26.811 [main] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1722011b] was not registered for synchronization because synchronization is not active
+20:12:26.811 [main] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@5b3f61ff] will not be managed by Spring
+20:12:26.811 [main] DEBUG com.hisen.dao.BookDao.addBook - ==>  Preparing: INSERT INTO book(`book_id`, `name`, `number`,`detail`) VALUES(?, ?, ?, ?) 
+20:12:26.812 [main] DEBUG com.hisen.dao.BookDao.addBook - ==> Parameters: 0(Long), 活着4(String), 104(Integer), 描述4(String)
+20:12:26.816 [main] DEBUG com.hisen.dao.BookDao.addBook - <==    Updates: 1
+20:12:26.817 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1722011b]
+20:12:26.817 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+20:12:26.817 [main] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6a47b187] was not registered for synchronization because synchronization is not active
+20:12:26.817 [main] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@1ef6d34c] will not be managed by Spring
+20:12:26.817 [main] DEBUG com.hisen.dao.BookDao.addBook - ==>  Preparing: INSERT INTO book(`book_id`, `name`, `number`,`detail`) VALUES(?, ?, ?, ?) 
+20:12:26.818 [main] DEBUG com.hisen.dao.BookDao.addBook - ==> Parameters: 0(Long), 活着5(String), 105(Integer), 描述5(String)
+20:12:26.822 [main] DEBUG com.hisen.dao.BookDao.addBook - <==    Updates: 1
+20:12:26.823 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6a47b187]
+20:12:26.823 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+20:12:26.823 [main] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fa34d52] was not registered for synchronization because synchronization is not active
+20:12:26.824 [main] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@616ac46a] will not be managed by Spring
+20:12:26.825 [main] DEBUG com.hisen.dao.BookDao.addBook - ==>  Preparing: INSERT INTO book(`book_id`, `name`, `number`,`detail`) VALUES(?, ?, ?, ?) 
+20:12:26.825 [main] DEBUG com.hisen.dao.BookDao.addBook - ==> Parameters: 0(Long), 活着6(String), 106(Integer), 描述6(String)
+20:12:26.830 [main] DEBUG com.hisen.dao.BookDao.addBook - <==    Updates: 1
+20:12:26.830 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fa34d52]
+20:12:26.830 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+20:12:26.830 [main] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1d483de4] was not registered for synchronization because synchronization is not active
+20:12:26.831 [main] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@28d18df5] will not be managed by Spring
+20:12:26.831 [main] DEBUG com.hisen.dao.BookDao.addBook - ==>  Preparing: INSERT INTO book(`book_id`, `name`, `number`,`detail`) VALUES(?, ?, ?, ?) 
+20:12:26.832 [main] DEBUG com.hisen.dao.BookDao.addBook - ==> Parameters: 0(Long), 活着7(String), 107(Integer), 描述7(String)
+20:12:26.836 [main] DEBUG com.hisen.dao.BookDao.addBook - <==    Updates: 1
+20:12:26.836 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1d483de4]
+20:12:26.836 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+20:12:26.836 [main] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2b175c00] was not registered for synchronization because synchronization is not active
+20:12:26.836 [main] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@1ae8bcbc] will not be managed by Spring
+20:12:26.836 [main] DEBUG com.hisen.dao.BookDao.addBook - ==>  Preparing: INSERT INTO book(`book_id`, `name`, `number`,`detail`) VALUES(?, ?, ?, ?) 
+20:12:26.837 [main] DEBUG com.hisen.dao.BookDao.addBook - ==> Parameters: 0(Long), 活着8(String), 108(Integer), 描述8(String)
+20:12:26.842 [main] DEBUG com.hisen.dao.BookDao.addBook - <==    Updates: 1
+20:12:26.842 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2b175c00]
+20:12:26.843 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+20:12:26.843 [main] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@35399441] was not registered for synchronization because synchronization is not active
+20:12:26.843 [main] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@6304101a] will not be managed by Spring
+20:12:26.843 [main] DEBUG com.hisen.dao.BookDao.addBook - ==>  Preparing: INSERT INTO book(`book_id`, `name`, `number`,`detail`) VALUES(?, ?, ?, ?) 
+20:12:26.843 [main] DEBUG com.hisen.dao.BookDao.addBook - ==> Parameters: 0(Long), 活着9(String), 109(Integer), 描述9(String)
+20:12:26.848 [main] DEBUG com.hisen.dao.BookDao.addBook - <==    Updates: 1
+20:12:26.848 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@35399441]
+```
+2. 测试:queryById
+```
+20:15:03.947 [main] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@7fc4780b] will not be managed by Spring
+20:15:03.972 [main] DEBUG com.hisen.dao.BookDao.queryById - ==>  Preparing: SELECT book_id, name, number, detail FROM book WHERE book_id = ? 
+20:15:04.047 [main] DEBUG com.hisen.dao.BookDao.queryById - ==> Parameters: 101(Long)
+20:15:04.076 [main] DEBUG com.hisen.dao.BookDao.queryById - <==      Total: 1
+20:15:04.088 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6f3187b0]
+Book{bookId=101, name='活着0', number=100, detail='描述0'}
+```
+以此类推，就不多写了
+
 第七步：创建mybatis mapper文件
 ---
 在resources/mapper/目录下创建：<a href="https://github.com/hisen-yuan/SSM_BookSystem/blob/master/BookSystem_V0/src/main/resources/mapper/BookMapper.xml" target="_blank">resources/mapper/BookMapper.xml</a>
@@ -188,6 +272,15 @@ logback配置比log4j要简单点，功能类似
 ```
 具体内容：<a href="https://github.com/hisen-yuan/SSM_BookSystem/tree/master/BookSystem_V0/src/main/java/com/hisen/service" target="_blank">service</a>
 
+1. 创建测试类：BookServiceImplTest （结果如下，就测试一个，其他以此类推）
+```
+20:19:58.871 [main] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@37fb0bed] will not be managed by Spring
+20:19:58.885 [main] DEBUG com.hisen.dao.BookDao.queryById - ==>  Preparing: SELECT book_id, name, number, detail FROM book WHERE book_id = ? 
+20:19:58.974 [main] DEBUG com.hisen.dao.BookDao.queryById - ==> Parameters: 101(Long)
+20:19:59.004 [main] DEBUG com.hisen.dao.BookDao.queryById - <==      Total: 1
+20:19:59.011 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2bec854f]
+Book{bookId=101, name='活着0', number=100, detail='描述0'}
+```
 第九步：创建controller
 ---
 ```
