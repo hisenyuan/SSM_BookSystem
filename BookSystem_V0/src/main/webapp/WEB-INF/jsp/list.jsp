@@ -19,11 +19,19 @@
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    HiSEN <small>图书管理系统 - by ssm基础框架</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="<%=appPath%>/book/list">首页</a></li>
                 <li><a href="<%=appPath%>/book/detail/1000">图书具体信息</a></li>
                 <li><a href="<%=appPath%>/add.jsp">添加图书信息</a></li>
-                <li><a href="<%=appPath%>/appoint.jsp">预约图书</a></li>
                 <li class="disabled"><a href="#">信息</a></li>
             </ul>
         </div>
