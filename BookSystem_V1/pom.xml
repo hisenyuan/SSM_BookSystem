@@ -109,6 +109,11 @@
       <artifactId>spring-test</artifactId>
       <version>4.1.7.RELEASE</version>
     </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.0.31</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>BookSystem_V1</finalName>
