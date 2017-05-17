@@ -12,4 +12,5 @@ public interface BookService {
   int addBook(Book book);
   int updateBook(Book book);
   int deleteBookById(long id);
+  int countNum();
 }

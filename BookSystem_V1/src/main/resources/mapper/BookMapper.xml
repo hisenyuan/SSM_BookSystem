@@ -48,4 +48,10 @@
   <delete id="deleteBookById">
     DELETE FROM book WHERE book_id = #{bookId}
   </delete>
+  <select id="countNum" resultType="java.lang.Integer">
+    SELECT
+    COUNT(*)
+    FROM
+    book
+  </select>
 </mapper>
