@@ -2,6 +2,7 @@ package com.hisen.web;
 
 import com.hisen.entity.Book;
 import com.hisen.service.BookService;
+import com.alibaba.fastjson.JSON;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -26,7 +28,7 @@ public class BookController {
 
   @RequestMapping(value = "/list", method = RequestMethod.GET)
   private String list(Model model) {
-    List<Book> list = bookService.getList(0, 1000);
+    List<Book> list = bookService.getList(0, 10);
     model.addAttribute("list", list);
     return "list";// WEB-INF/jsp/"list".jsp
   }
@@ -54,5 +56,35 @@ public class BookController {
   private String deleteBookById(@PathVariable("bookId") Long id) {
     int i = bookService.deleteBookById(id);
     return i > 0 ? "success" : "error";
+  }
+
+  /**
+   * 查询总页数
+   * @return
+   */
+  @RequestMapping(value = "/countNum", method = RequestMethod.POST, produces = {
+      "application/json; charset=utf-8"})
+  @ResponseBody
+  private int countNum() {
+    int num = bookService.countNum();
+    //计算页数，如果除以10有余数，得加上一页
+    int countNum = num / 10 + ((num % 10) > 0 ? 1 : 0);
+    return countNum;
+  }
+
+  /**
+   * 分页查询方法
+   * @param start
+   * @return
+   */
+  @RequestMapping(value = "/listpage", method = RequestMethod.POST)
+  @ResponseBody
+  private String listPage(@RequestParam("start") int start) {
+    //默认一页10条
+    List<Book> list = bookService.getList(start, 10);
+    //阿里fastjson把数组转换为json
+    String s = JSON.toJSONString(list);
+    //System.out.println(s);
+    return s;
   }
 }
