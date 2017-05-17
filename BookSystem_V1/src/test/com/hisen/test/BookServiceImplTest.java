@@ -18,4 +18,9 @@ public class BookServiceImplTest extends BookDaoTest {
     Book book = bookService.getById(101);
     System.out.println(book);
   }
+  @Test
+  public void countNum(){
+    int i = bookService.countNum();
+    System.out.println(i);
+  }
 }
