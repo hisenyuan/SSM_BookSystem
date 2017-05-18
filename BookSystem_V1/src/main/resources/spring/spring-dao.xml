@@ -1,74 +1,98 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:p="http://www.springframework.org/schema/p"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans.xsd
-    http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context.xsd">
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
   <!-- 配置整合mybatis过程 -->
-  <!-- 1.配置数据库相关参数properties的属性：${url} -->
-  <context:property-placeholder location="classpath:jdbc.properties" />
-
+  <!-- 1. 引入数据库配置文件 -->
+  <bean id="propertyConfigurer"
+    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations">
+      <list>
+        <!--oracle数据库配置文件-->
+        <value>classpath:jdbc.properties</value>
+        <!--redis数据库配置文件-->
+        <value>classpath:redis.properties</value>
+      </list>
+    </property>
+  </bean>
   <!-- 2.数据库连接池 -->
   <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
     init-method="init" destroy-method="close">
-    <property name="driverClassName" value="${jdbc.driverClassName}" />
-    <property name="url" value="${jdbc.url}" />
-    <property name="username" value="${jdbc.username}" />
-    <property name="password" value="${jdbc.password}" />
+    <property name="driverClassName" value="${jdbc.driverClassName}"/>
+    <property name="url" value="${jdbc.url}"/>
+    <property name="username" value="${jdbc.username}"/>
+    <property name="password" value="${jdbc.password}"/>
     <!-- 配置初始化大小、最小、最大 -->
-    <property name="initialSize" value="1" />
-    <property name="minIdle" value="1" />
-    <property name="maxActive" value="10" />
+    <property name="initialSize" value="1"/>
+    <property name="minIdle" value="1"/>
+    <property name="maxActive" value="10"/>
     <!-- 配置获取连接等待超时的时间 -->
-    <property name="maxWait" value="10000" />
+    <property name="maxWait" value="10000"/>
     <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-    <property name="timeBetweenEvictionRunsMillis" value="60000" />
+    <property name="timeBetweenEvictionRunsMillis" value="60000"/>
     <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-    <property name="minEvictableIdleTimeMillis" value="300000" />
-    <property name="testWhileIdle" value="true" />
+    <property name="minEvictableIdleTimeMillis" value="300000"/>
+    <property name="testWhileIdle" value="true"/>
     <!-- 这里建议配置为TRUE，防止取到的连接不可用 -->
-    <property name="testOnBorrow" value="true" />
-    <property name="testOnReturn" value="false" />
+    <property name="testOnBorrow" value="true"/>
+    <property name="testOnReturn" value="false"/>
     <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-    <property name="poolPreparedStatements" value="true" />
-    <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+    <property name="poolPreparedStatements" value="true"/>
+    <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
     <!-- 这里配置提交方式，默认就是TRUE，可以不用配置 -->
-    <property name="defaultAutoCommit" value="true" />
+    <property name="defaultAutoCommit" value="true"/>
     <!-- 验证连接有效与否的SQL，不同的数据配置不同 -->
-    <property name="validationQuery" value="select 1 " />
-    <property name="filters" value="stat" />
+    <property name="validationQuery" value="select 1 "/>
+    <property name="filters" value="stat"/>
     <property name="proxyFilters">
       <list>
-        <ref bean="logFilter" />
+        <ref bean="logFilter"/>
       </list>
     </property>
   </bean>
   <bean id="logFilter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
-    <property name="statementExecutableSqlLogEnable" value="false" />
+    <property name="statementExecutableSqlLogEnable" value="false"/>
   </bean>
   <bean id="transactionManager"
     class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    <property name="dataSource" ref="dataSource" />
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+  <!-- 3. redis数据源 -->
+  <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+    <property name="maxIdle" value="${redis.maxIdle}"/>
+    <property name="maxTotal" value="${redis.maxActive}"/>
+    <property name="maxWaitMillis" value="${redis.maxWait}"/>
+    <property name="testOnBorrow" value="${redis.testOnBorrow}"/>
+  </bean>
+  <!-- Spring-redis连接池管理工厂 -->
+  <bean id="jedisConnectionFactory"
+    class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+    p:host-name="${redis.host}" p:port="${redis.port}" p:password="${redis.pass}"
+    p:pool-config-ref="poolConfig"/>
+  <!-- 使用中间类解决RedisCache.jedisConnectionFactory的静态注入，从而使MyBatis实现第三方缓存 -->
+  <bean id="redisCacheTransfer" class="com.hisen.dao.RedisCacheTransfer">
+    <property name="jedisConnectionFactory" ref="jedisConnectionFactory"/>
   </bean>
 
-  <!-- 3.配置SqlSessionFactory对象 -->
+  <!-- 4. 配置SqlSessionFactory对象 -->
   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     <!-- 注入数据库连接池 -->
-    <property name="dataSource" ref="dataSource" />
+    <property name="dataSource" ref="dataSource"/>
     <!-- 配置MyBaties全局配置文件:mybatis-config.xml -->
-    <property name="configLocation" value="classpath:mybatis-config.xml" />
+    <property name="configLocation" value="classpath:mybatis-config.xml"/>
     <!-- 扫描entity包 使用别名 -->
-    <property name="typeAliasesPackage" value="com.hisen.entity" />
+    <property name="typeAliasesPackage" value="com.hisen.entity"/>
     <!-- 扫描sql配置文件:mapper需要的xml文件 -->
-    <property name="mapperLocations" value="classpath:mapper/*.xml" />
+    <property name="mapperLocations" value="classpath:mapper/*.xml"/>
   </bean>
 
-  <!-- 4.配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 -->
+  <!-- 5. 配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 -->
   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
     <!-- 注入sqlSessionFactory -->
-    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     <!-- 给出需要扫描Dao接口包 -->
-    <property name="basePackage" value="com.hisen.dao" />
+    <property name="basePackage" value="com.hisen.dao"/>
   </bean>
 </beans>
