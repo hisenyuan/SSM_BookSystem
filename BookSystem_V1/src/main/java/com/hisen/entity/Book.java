@@ -1,9 +1,12 @@
 package com.hisen.entity;
 
+import java.io.Serializable;
+
 /**
+ * 图书实体类，需要实现Serializable接口以便存放在redis中
  * Created by hisen on 17-4-24.
  */
-public class Book {
+public class Book implements Serializable {
   private long bookId;
   private String name;
   private int number;
