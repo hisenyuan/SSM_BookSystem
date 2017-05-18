@@ -21,7 +21,8 @@
         <div class="col-md-12 column">
             <div class="page-header">
                 <h1>
-                    HiSEN <small>图书管理系统 - by ssm基础框架</small>
+                    HiSEN
+                    <small>图书管理系统 - by ssm基础框架</small>
                 </h1>
             </div>
         </div>
@@ -39,7 +40,9 @@
     <div class="row clearfix">
         <div class="col-md-12 column">
             <div class="page-header">
-                <h1>图书列表 <small>显示当前图书库存信息</small></h1>
+                <h1>图书列表
+                    <small>显示当前图书库存信息</small>
+                </h1>
             </div>
         </div>
     </div>
@@ -74,7 +77,8 @@
     <div id="warning" class="row clearfix" style="display:none;">
         <div class="col-md-12 column">
             <div class="alert alert-dismissable alert-danger">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                </button>
                 <strong>提醒：</strong><span id="warning-text"></span>
             </div>
         </div>
@@ -117,15 +121,15 @@
   });
   //分页点击事件
   $('ul li').click(function () {
-    var page=1;
+    var page = 1;
     var who = $(this).index();
-    $('#warning').css('display','none');
+    $('#warning').css('display', 'none');
     $('#warning-text').empty();
     if (who == 0) {
       if (now - 1 <= 1) {
         page = 1;
-        now=page;
-        $('#warning').css('display','block');
+        now = page;
+        $('#warning').css('display', 'block');
         $('#warning-text').append("前面没有了！");
       }
       if (now - 1 > 1) {
@@ -133,7 +137,7 @@
         now = page;
       }
     }
-    if (who >0 && who < 6) {
+    if (who > 0 && who < 6) {
       if (who > countNum) {
         page = countNum;
         now = page;
@@ -149,7 +153,7 @@
       }
       if (countNum < now + 1) {
         page = now;
-        $('#warning').css('display','block');
+        $('#warning').css('display', 'block');
         $('#warning-text').append("后面没有了！");
       }
     }
@@ -168,7 +172,8 @@
               '<td>' + data[i].bookId + '</td>' +
               '<td>' + data[i].name + '</td>' +
               '<td>' + data[i].number + '</td>' +
-              '<td><a href="<%=appPath%>/book/detail/' + data[i].bookId + '"' + '>详情</a></td>' +
+              '<td><a href="<%=appPath%>/book/detail/' + data[i].bookId + '"'
+              + '>详情</a> | <a href="<%=appPath%>/book/del/' + data[i].bookId + '"' + '>详情</a></td>' +
               '</tr>'
           );
         }
