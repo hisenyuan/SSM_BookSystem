@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 </head>
 <body>
-<h2>SSM_BookSystem</h2>
+<h2>SSM_BookSystem --- V1</h2>
 目前包含简单的查询、分页、redis缓存
 <br />
 更新：2017年5月18日 17:51:22
