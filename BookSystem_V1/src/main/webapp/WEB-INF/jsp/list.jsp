@@ -173,7 +173,8 @@
               '<td>' + data[i].name + '</td>' +
               '<td>' + data[i].number + '</td>' +
               '<td><a href="<%=appPath%>/book/detail/' + data[i].bookId + '"'
-              + '>详情</a> | <a href="<%=appPath%>/book/del/' + data[i].bookId + '"' + '>详情</a></td>' +
+              + '>详情</a> | <a href="<%=appPath%>/book/del/' + data[i].bookId + '"' + '>删除</a></td>'
+              +
               '</tr>'
           );
         }
