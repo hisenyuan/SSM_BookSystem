@@ -46,6 +46,8 @@ public class RedisCache implements Cache {
     try {
       connection = jedisConnectionFactory.getConnection();
       RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
+      //目前没有设置超时时间，可以设置如下，此为三秒钟过期
+      //connection.setEx(serializer.serialize(key),3,serializer.serialize(value));
       connection.set(serializer.serialize(key), serializer.serialize(value));
     } catch (JedisConnectionException e) {
       e.printStackTrace();
