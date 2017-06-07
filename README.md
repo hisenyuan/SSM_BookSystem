@@ -1,13 +1,13 @@
 # SSM_BookSystem SSM框架基础
-SSM_BookSystem ---> Hello CRUD
+SSM_BookSystem V0---> Hello CRUD
 
 说明：本项目目前包含基础的CRUD
 
-日期：2017-05-01 22:25:37
-
 作者：hisenyuan
 
-网站：<a href="http://hisen.me" target="_blank">hisen.me</a>
+主页：<a href="http://hisen.me" target="_blank">hisen.me</a>
+
+博客：<a href="http://www.cnblogs.com/hisen/" target="_blank">http://www.cnblogs.com/hisen/</a>
 
 预览：
 
