@@ -12,7 +12,7 @@
 <br />
 作者：hisenyuan
 <br />
-网站：<a href="hisen.me" target="_blank">hisen.me</a>
+网站：<a href="http://hisen.me" target="_blank">hisen.me</a>
 <br /><br /><br />
 图书系统：<a href="<%=appPath%>/book/list">SSM_BookSystem V1(点击进入)</a>
 </body>
