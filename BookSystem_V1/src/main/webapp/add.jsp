@@ -94,7 +94,7 @@
         list();
       },
       error:function(data){
-        alert("添加失败");
+        //alert("添加失败");
       }
     });
     ev.preventDefault();

@@ -15,6 +15,8 @@ SSM_BookSystem V0---> Hello CRUD
 
 <img src="http://wx1.sinaimg.cn/mw690/b2e389b6ly1ff8grp3x4uj20ql0emdhw.jpg" />
 
+<img src="http://wx4.sinaimg.cn/mw690/b2e389b6ly1fgctkj7kx9j20ml0ge0uh.jpg" />
+
 ---
 
 搭建过程：
