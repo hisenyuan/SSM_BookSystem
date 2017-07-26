@@ -120,10 +120,15 @@
       <artifactId>aopalliance</artifactId>
       <version>1.0</version>
     </dependency>
-    <dependency>
+    <dependency><!--获取切面指向的方法相关信息-->
       <groupId>org.apache.geronimo.bundles</groupId>
       <artifactId>aspectjweaver</artifactId>
       <version>1.6.8_2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>1.8.9</version>
     </dependency>
     <!--Spring AOP-->
 

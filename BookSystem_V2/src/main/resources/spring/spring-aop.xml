@@ -8,12 +8,19 @@
         http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
   <!--切面-->
   <bean id="timeHandler" class="com.hisen.aop.TimeHandler"/>
+  <bean id="getMethodInfoHandler" class="com.hisen.aop.GetMethodInfoHandler"/>
   <aop:config>
     <aop:aspect id="time" ref="timeHandler">
       <!--给所有方法都加上切面功能 - 打印时间 -->
       <aop:pointcut id="addAllMethod" expression="execution(* com.hisen.service.BookService.*(..))"/>
       <aop:before method="printTime" pointcut-ref="addAllMethod"/>
       <aop:after method="printTime" pointcut-ref="addAllMethod"/>
+    </aop:aspect>
+    <aop:aspect id="info" ref="getMethodInfoHandler">
+      <!--给所有方法都加上切面功能 - 打印时间 -->
+      <aop:pointcut id="addInfo" expression="execution(* com.hisen.service.BookService.*(..))"/>
+      <aop:before method="getInfo" pointcut-ref="addInfo"/>
+      <aop:after method="getInfo" pointcut-ref="addInfo"/>
     </aop:aspect>
   </aop:config>
 </beans>
