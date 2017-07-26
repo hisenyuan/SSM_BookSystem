@@ -6,11 +6,8 @@
         http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
-
-  <!--实现类-->
   <!--切面-->
   <bean id="timeHandler" class="com.hisen.aop.TimeHandler"/>
-
   <aop:config>
     <aop:aspect id="time" ref="timeHandler">
       <!--给所有方法都加上切面功能 - 打印时间 -->
