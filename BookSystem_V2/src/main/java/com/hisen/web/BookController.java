@@ -90,14 +90,13 @@ public class BookController {
   }
 
   @RequestMapping(value = "/listpageplug/{start}", method = RequestMethod.GET)
-  @ResponseBody
-  private String listPagePlug(@PathVariable("start") String start) {
+//  @ResponseBody
+  private String listPagePlug(@PathVariable("start") String start, Model model) {
     PageHelper.startPage(Integer.valueOf(start), 20);
     //默认一页10条
-    List<Book> list = bookService.getListPlug();
-    //阿里fastjson把数组转换为json
-    String s = JSON.toJSONString(list);
+    List<Book> readingList = bookService.getListPlug();
+    model.addAttribute("books", readingList);
     //System.out.println(s);
-    return s;
+    return "readingList";
   }
 }
