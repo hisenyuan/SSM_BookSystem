@@ -2,25 +2,68 @@
 <!--最好是创建一个纯净的html文件，不然会报错-->
 <head>
   <title>Reading List</title>
-  <link rel="stylesheet" th:href="@{/style.css}"></link>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 引入 Bootstrap -->
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+  <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 <body>
-<h2>Your Reading List</h2>
-<div th:unless="${#lists.isEmpty(books)}">
-  <dl th:each="book : ${books}">
-    <dt class="bookHeadline">
-      <span th:text="${book.bookId}">Title</span> by
-      <span th:text="${book.name}">Author</span>
-      (ISBN:<span th:text="${book.number}">ISBN</span>)
-    </dt>
-    <dd class="bookDecsription">
-      <span th:if="${book.detail}" th:text="${book.detail}">Description</span>
-      <span th:if="${book.detail eq null}">No Description Available</span>
-    </dd>
-  </dl>
-</div>
-<div th:if="${#lists.isEmpty(books)}">
-  <p>you have no book in you book list</p>
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="page-header">
+        <h1>
+          HiSEN
+          <small>图书管理系统 - by ssm基础框架</small>
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="<%=appPath%>/book/list">首页</a></li>
+        <li><a href="<%=appPath%>/book/detail/1000">图书具体信息</a></li>
+        <li><a href="<%=appPath%>/add.jsp">添加图书信息</a></li>
+        <li class="disabled"><a href="#">信息</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="page-header">
+        <h1>图书列表
+          <small>显示当前图书库存信息</small>
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+          <th>图书编号</th>
+          <th>图书名字</th>
+          <th>图书数量</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody th:unless="${#lists.isEmpty(books)}">
+          <tr th:each="book : ${books}">
+            <td th:text="${book.bookId}"></td>
+            <td th:text="${book.name}"></td>
+            <td th:text="${book.number}"></td>
+            <td>
+              <a href="<%=appPath%>/book/detail/${book.bookId}">详情</a> |
+              <a href="<%=appPath%>/book/del/${book.bookId}">删除</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 </body>
 </html>
