@@ -23,11 +23,23 @@
    -->
   <mvc:default-servlet-handler/>
 
-  <!-- 3.配置jsp 显示ViewResolver -->
-  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-    <property name="prefix" value="/WEB-INF/jsp/" />
-    <property name="suffix" value=".jsp" />
+  <!-- 3.配置jsp 显示ViewResolver 使用：thymeleaf 模版引擎-->
+  <bean id="templateResolver"
+    class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
+    <property name="prefix" value="/WEB-INF/templates/"/>
+    <property name="suffix" value=".html"/>
+    <property name="templateMode" value="HTML5"/>
+    <!-- 缓存-->
+    <property name="cacheable" value="false"/>
+  </bean>
+  <bean id="templateEngine"
+    class="org.thymeleaf.spring4.SpringTemplateEngine">
+    <property name="templateResolver" ref="templateResolver"/>
+  </bean>
+  <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+    <property name="templateEngine" ref="templateEngine"/>
+    <property name="order" value="1"/>
+    <property name="characterEncoding" value="UTF-8"/>
   </bean>
 
   <!-- 4.扫描web相关的bean -->
