@@ -14,4 +14,5 @@ public interface BookDao {
   int updateBook(Book book);
   int deleteBookById(long id);
   int countNum();
+  List<Book> queryAllPlug();
 }

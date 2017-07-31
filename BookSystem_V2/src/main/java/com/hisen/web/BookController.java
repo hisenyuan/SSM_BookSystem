@@ -1,6 +1,7 @@
 package com.hisen.web;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageHelper;
 import com.hisen.entity.Book;
 import com.hisen.service.BookService;
 import java.util.List;
@@ -82,6 +83,18 @@ public class BookController {
   private String listPage(@RequestParam("start") int start) {
     //默认一页10条
     List<Book> list = bookService.getList(start, 10);
+    //阿里fastjson把数组转换为json
+    String s = JSON.toJSONString(list);
+    //System.out.println(s);
+    return s;
+  }
+
+  @RequestMapping(value = "/listpageplug/{start}", method = RequestMethod.GET)
+  @ResponseBody
+  private String listPagePlug(@PathVariable("start") String start) {
+    PageHelper.startPage(Integer.valueOf(start), 20);
+    //默认一页10条
+    List<Book> list = bookService.getListPlug();
     //阿里fastjson把数组转换为json
     String s = JSON.toJSONString(list);
     //System.out.println(s);

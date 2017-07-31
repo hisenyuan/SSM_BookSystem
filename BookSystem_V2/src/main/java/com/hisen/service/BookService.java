@@ -13,4 +13,5 @@ public interface BookService {
   int updateBook(Book book);
   int deleteBookById(long id);
   int countNum();
+  List<Book> getListPlug();
 }

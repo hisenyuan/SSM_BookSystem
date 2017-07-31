@@ -131,8 +131,6 @@
       <version>1.8.9</version>
     </dependency>
     <!--Spring AOP-->
-
-
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>druid</artifactId>
@@ -161,6 +159,18 @@
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis-ehcache</artifactId>
       <version>1.0.0</version>
+    </dependency>
+    <!--分页插件-->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+    <!--thymeleaf模版-->
+    <dependency>
+      <groupId>org.thymeleaf</groupId>
+      <artifactId>thymeleaf-spring4</artifactId>
+      <version>3.0.5.RELEASE</version>
     </dependency>
   </dependencies>
   <build>

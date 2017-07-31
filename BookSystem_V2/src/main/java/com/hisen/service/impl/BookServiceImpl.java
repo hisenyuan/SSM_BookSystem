@@ -39,4 +39,8 @@ public class BookServiceImpl implements BookService {
   public int countNum() {
     return bookDao.countNum();
   }
+
+  public List<Book> getListPlug() {
+    return bookDao.queryAllPlug();
+  }
 }

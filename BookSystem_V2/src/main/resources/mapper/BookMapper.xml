@@ -28,6 +28,18 @@
     LIMIT #{offset}, #{limit}
   </select>
 
+  <select id="queryAllPlug" resultType="Book">
+    SELECT
+    book_id,
+    name,
+    number,
+    detail
+    FROM
+    book
+    ORDER BY
+    book_id
+  </select>
+
   <update id="updateBook" parameterType="Book">
     UPDATE book
     SET NAME = #{name},
