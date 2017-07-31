@@ -1,0 +1,26 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--最好是创建一个纯净的html文件，不然会报错-->
+<head>
+  <title>Reading List</title>
+  <link rel="stylesheet" th:href="@{/style.css}"></link>
+</head>
+<body>
+<h2>Your Reading List</h2>
+<div th:unless="${#lists.isEmpty(books)}">
+  <dl th:each="book : ${books}">
+    <dt class="bookHeadline">
+      <span th:text="${book.bookId}">Title</span> by
+      <span th:text="${book.name}">Author</span>
+      (ISBN:<span th:text="${book.number}">ISBN</span>)
+    </dt>
+    <dd class="bookDecsription">
+      <span th:if="${book.detail}" th:text="${book.detail}">Description</span>
+      <span th:if="${book.detail eq null}">No Description Available</span>
+    </dd>
+  </dl>
+</div>
+<div th:if="${#lists.isEmpty(books)}">
+  <p>you have no book in you book list</p>
+</div>
+</body>
+</html>
