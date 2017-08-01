@@ -180,6 +180,12 @@ logback配置比log4j要简单点，功能类似
 
 详细内容：<a href="https://github.com/hisen-yuan/SSM_BookSystem/blob/master/BookSystem_V0/src/main/java/com/hisen/entity/Book.java" target="_blank">Book.java</a>
 
+第七步：创建mybatis mapper文件
+---
+在resources/mapper/目录下创建：<a href="https://github.com/hisen-yuan/SSM_BookSystem/blob/master/BookSystem_V0/src/main/resources/mapper/BookMapper.xml" target="_blank">resources/mapper/BookMapper.xml</a>
+
+在mapper文件中需要用到**第六步**的内容
+
 创建测试类：
 
 1. 测试基类：查看代码<a href="https://github.com/hisen-yuan/SSM_BookSystem/blob/master/BookSystem_V0/src/test/com/hisen/test/BaseTest.java" target="_blank">BaseTest.java</a>
@@ -265,12 +271,6 @@ logback配置比log4j要简单点，功能类似
 Book{bookId=101, name='活着0', number=100, detail='描述0'}
 ```
 以此类推，就不多写了
-
-第七步：创建mybatis mapper文件
----
-在resources/mapper/目录下创建：<a href="https://github.com/hisen-yuan/SSM_BookSystem/blob/master/BookSystem_V0/src/main/resources/mapper/BookMapper.xml" target="_blank">resources/mapper/BookMapper.xml</a>
-
-在mapper文件中需要用到**第六步**的内容
 
 第八步：创建service
 ---
