@@ -10,16 +10,8 @@
 </head>
 <body>
 <div class="container">
-  <div class="row clearfix">
-    <div class="col-md-12 column">
-      <div class="page-header">
-        <h1>
-          HiSEN
-          <small>图书管理系统 - thymeleaf模版引擎 + bootstrap</small>
-        </h1>
-      </div>
-    </div>
-  </div>
+  <!--引用定义好的页尾模板:headercontext-->
+  <div th:include="header :: headercontext"></div>
   <div class="row clearfix">
     <div class="col-md-12 column">
       <div class="page-header">
@@ -48,13 +40,15 @@
             <td th:text="${book.name}"></td>
             <td th:text="${book.number}"></td>
             <td>
-              <a href="<%=appPath%>/book/detail/${book.bookId}">详情</a> |
-              <a href="<%=appPath%>/book/del/${book.bookId}">删除</a>
+              <a th:href="@{/book/detail/bookId(bookId=${book.bookId})}">详情</a> |
+              <a th:href="@{/book/del/bookId(bookId=${book.bookId})}">删除</a>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+    <!--引用定义好的页尾模板:copyright-->
+    <div th:include="footer :: copyright (2011,2017)"></div>
   </div>
 </div>
 </body>
