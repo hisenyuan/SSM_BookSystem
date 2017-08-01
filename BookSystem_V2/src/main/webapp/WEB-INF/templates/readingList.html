@@ -40,8 +40,9 @@
             <td th:text="${book.name}"></td>
             <td th:text="${book.number}"></td>
             <td>
-              <a th:href="@{/book/detail/bookId(bookId=${book.bookId})}">详情</a> |
-              <a th:href="@{/book/del/bookId(bookId=${book.bookId})}">删除</a>
+              <!--拼接URL，占坑填上即可，避免加号拼接-->
+              <a th:href="@{/book/detail/{bookId} (bookId=${book.bookId})}">详情</a> |
+              <a th:href="@{/book/del/{bookId} (bookId=${book.bookId})}">删除</a>
             </td>
           </tr>
         </tbody>
