@@ -194,4 +194,16 @@ public class Appointment {
     public void setRealReturnTime(Date realReturnTime) {
         this.realReturnTime = realReturnTime;
     }
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+            "id=" + id +
+            ", bookId=" + bookId +
+            ", userNumber=" + userNumber +
+            ", appointmentTime=" + appointmentTime +
+            ", expectReturnTime=" + expectReturnTime +
+            ", realReturnTime=" + realReturnTime +
+            '}';
+    }
 }
