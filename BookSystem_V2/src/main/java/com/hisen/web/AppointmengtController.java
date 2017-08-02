@@ -1,7 +1,16 @@
 package com.hisen.web;
 
+import com.alibaba.fastjson.JSON;
+import com.hisen.dao.form.AppointmentForm;
+import com.hisen.service.AppointmentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by hisenyuan on 2017/8/2 at 10:27.
@@ -10,4 +19,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/appointment")
 public class AppointmengtController {
 
+  private Logger logger = LoggerFactory.getLogger(this.getClass());
+  @Autowired
+  private AppointmentService appointmentService;
+
+  /**
+   * 借书的一个小功能
+   * 本地测试成功
+   * localhost:8080/V2/appointment/appoint/103/20080808/20
+   * @param bookId
+   * @param userNumber
+   * @param holdDay
+   * @return
+   */
+  @RequestMapping(value = "/appoint/{bookId}/{userNumber}/{holdDay}", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+  @ResponseBody
+  public String appoint(@PathVariable("bookId") int bookId,
+      @PathVariable("userNumber") int userNumber, @PathVariable("holdDay") String holdDay) {
+    AppointmentForm form = new AppointmentForm();
+    form.setBookId(bookId);
+    form.setUserNumber(userNumber);
+    form.setHoldDay(holdDay);
+    logger.info("借书入参 AppointmengtController >>>>> " + form.toString());
+    int appoint = appointmentService.appoint(form);
+    String s = JSON.toJSONString(appoint > 0 ? "借书成功" : "借书失败");
+    return s;
+  }
 }
