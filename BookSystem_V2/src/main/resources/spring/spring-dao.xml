@@ -97,9 +97,4 @@
     <!-- 给出需要扫描Dao接口包 -->
     <property name="basePackage" value="com.hisen.dao"/>
   </bean>
-
-  <!-- 6. 开启事物注解-->
-  <tx:annotation-driven  transaction-manager="transactionManager" />
-  <!--这行代码是为了将发生事务的代码全部放入一个上下文中。-->
-  <context:component-scan base-package="com.hisen.service" />
 </beans>
