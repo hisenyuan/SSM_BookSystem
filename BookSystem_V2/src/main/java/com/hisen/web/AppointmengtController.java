@@ -25,7 +25,7 @@ public class AppointmengtController {
 
   /**
    * 借书的一个小功能
-   * 本地测试成功
+   * 本地测试成功，暂时不想写页面
    * localhost:8080/V2/appointment/appoint/103/20080808/20
    * @param bookId
    * @param userNumber
