@@ -26,7 +26,8 @@ public class AppointmentServiceImpl implements AppointmentService {
   /**
    * 预约图书
    */
-  @Transactional(rollbackFor = {RuntimeException.class})
+  //如果发生了异常，就进行回滚
+  @Transactional(rollbackFor = {Exception.class})
   public int appoint(AppointmentForm record) {
     //利用google guava判空
     checkNotNull(record.getUserNumber(), "用户号不能为空");
@@ -45,7 +46,7 @@ public class AppointmentServiceImpl implements AppointmentService {
       insert = appointmentMapper.insert(record);
       book.setNumber(num - 1);
       bookDao.updateBook(book);
-//      checkNotNull(null, "用户号不能为空"); //用来测试事物控制
+//      checkNotNull(null, "出现异常，事物回滚。用来测试事物控制");
     }
     return insert;
   }
