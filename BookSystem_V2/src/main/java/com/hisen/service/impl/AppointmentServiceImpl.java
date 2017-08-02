@@ -8,6 +8,8 @@ import com.hisen.dao.form.AppointmentForm;
 import com.hisen.entity.Book;
 import com.hisen.service.AppointmentService;
 import org.joda.time.DateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 public class AppointmentServiceImpl implements AppointmentService {
+
+  private Logger logger = LoggerFactory.getLogger(this.getClass());
 
   @Autowired
   private AppointmentMapper appointmentMapper;
@@ -45,6 +49,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     if (num >= 1) {
       insert = appointmentMapper.insert(record);
       book.setNumber(num - 1);
+      logger.info("借书入参 AppointmentServiceImpl >>>>> "+record.toString());
       bookDao.updateBook(book);
 //      checkNotNull(null, "出现异常，事物回滚。用来测试事物控制");
     }

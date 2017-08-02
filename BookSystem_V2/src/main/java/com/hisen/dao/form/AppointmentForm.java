@@ -15,4 +15,11 @@ public class AppointmentForm extends Appointment {
   public void setHoldDay(String holdDay) {
     this.holdDay = holdDay;
   }
+
+  @Override
+  public String toString() {
+    return "AppointmentForm{" +
+        "holdDay='" + holdDay + '\'' +
+        '}';
+  }
 }
