@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+  <context id="mysqlgenerator" targetRuntime="MyBatis3">
+
+    <jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/booksystem"
+      driverClass="com.mysql.jdbc.Driver"
+      password="hisen"
+      userId="root"/>
+
+    <javaModelGenerator targetPackage="com.hisen.entity" targetProject="src/main/java"/>
+
+    <!--java方式的mapper-->
+    <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+    <!--xml方式的mapper-->
+    <!--<javaClientGenerator targetPackage="mapper" targetProject="src/main/resources" type="XMLMAPPER"/>-->
+
+    <table tableName="appointment"/>
+    <table tableName="user"/>
+
+  </context>
+
+</generatorConfiguration>
