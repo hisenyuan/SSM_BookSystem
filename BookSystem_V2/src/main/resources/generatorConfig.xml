@@ -17,7 +17,7 @@
     <!--java方式的mapper-->
     <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
     <!--xml方式的mapper-->
-    <!--<javaClientGenerator targetPackage="mapper" targetProject="src/main/resources" type="XMLMAPPER"/>-->
+    <javaClientGenerator targetPackage="mapper" targetProject="src/main/resources" type="XMLMAPPER"/>
 
     <table tableName="appointment"/>
     <table tableName="user"/>
