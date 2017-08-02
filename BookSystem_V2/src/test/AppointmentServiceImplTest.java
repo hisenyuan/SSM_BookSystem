@@ -17,7 +17,7 @@ public class AppointmentServiceImplTest extends BaseTest {
   @Test
   public void insertApponit() {
     AppointmentForm form = new AppointmentForm();
-    form.setHoldDay(String.valueOf(10));
+    form.setHoldDay("10");
     form.setBookId(103);
     form.setUserNumber(20080808);
     int appoint = appointmentService.appoint(form);

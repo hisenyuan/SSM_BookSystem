@@ -1,5 +1,3 @@
-import com.hisen.dao.UserExample;
-import com.hisen.dao.UserExample.Criteria;
 import com.hisen.dao.UserMapper;
 import com.hisen.entity.User;
 import org.junit.Test;
