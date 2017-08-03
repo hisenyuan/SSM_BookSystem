@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="page">
+  <link rel="stylesheet" th:href="@{/css/pagestyle.css}" rel="external nofollow" />
+  <script th:inline="javascript">
+    (function($) {
+      /*<![CDATA[*/
+      var count=[[${page.pagecount}]];
+      var start=[[${page.pageon}]];
+      /*]]>*/
+      var url=$("#page").attr('url');
+      var displaycnt=count>10?10:count;
+      fenye(count,start,url,displaycnt);
+    })(jQuery);
+    function fenye(count,start,url,displaycnt){
+      /*<![CDATA[*/
+      if(count<2)
+        return;
+      /*]]>*/
+      $("#page").paginate({
+        count     : count,
+        start     : start,
+        display   : displaycnt,
+        border          : true,
+        border_color      : '#fff',
+        text_color       : '#fff',
+        background_color    : 'pink',
+        border_hover_color    : '#ccc',
+        text_hover_color     : '#000',
+        background_hover_color  : '#fff',
+        images          : true,
+        mouse          : 'press',
+        onChange: function(page_index) {
+          var tourl;
+          /*<![CDATA[*/
+          if(url.indexOf('?')>0)
+            tourl=url+'&pageon='+page_index;
+          else
+            tourl=url+'?pageon='+page_index;
+          window.location.href=tourl;
+          /*]]>*/
+        }
+      });
+    };
+  </script>
+</head>
+</html>
