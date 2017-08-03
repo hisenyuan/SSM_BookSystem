@@ -1,0 +1,96 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title>图书列表</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 引入 Bootstrap -->
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+<div class="container">
+  <!--引用定义好的页尾模板:headercontext-->
+  <div th:include="header :: headercontext"></div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="<%=appPath%>/book/list">首页</a></li>
+        <li><a th:href="@{/book/detail/1000}">图书具体信息</a></li>
+        <li><a th:href="@{/add.jsp}">添加图书信息</a></li>
+        <li class="disabled"><a href="#">信息</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="page-header">
+        <h1>图书列表
+          <small>显示当前图书库存信息</small>
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+          <th>图书编号</th>
+          <th>图书名字</th>
+          <th>图书数量</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <!--判断是否为空-->
+        <tbody th:unless="${#lists.isEmpty(books)}">
+
+        <!--循环-->
+        <tr th:each="book : ${books}">
+          <td th:text="${book.bookId}"></td>
+          <td th:text="${book.name}"></td>
+          <td th:text="${book.number}"></td>
+          <!--拼接URL，占坑填上即可，避免加号拼接-->
+          <td>
+            <a th:href="@{/book/detail/{bookId} (bookId=${book.bookId})}">详情</a> |
+            <a th:href="@{/book/del/{bookId} (bookId=${book.bookId})}">删除</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <ul class="pagination pagination-lg">
+        <!-- 上一页 -->
+        <li class="page-item" data-th-classappend="*{first} ? 'disabled' : ''">
+          <a href="javascript:void(0);" class="page-link"
+             data-th-attr="pageIndex=${page.number} - 1" aria-label="Previous">
+            <span aria-hidden="true">上一页</span>
+          </a>
+        </li>
+
+        <!-- 迭代生成页码 -->
+        <li class="page-item" data-th-each="i : ${#numbers.sequence(1, page.totalPages)}"
+            data-th-classappend="${(page.number + 1) eq i} ? 'active' : ''">
+          <a class="page-link" data-th-attr="pageIndex=${i} - 1" href="javascript:void(0);">
+            <span data-th-text="${i}"></span>
+          </a>
+        </li>
+
+        <!-- 下一页 -->
+        <li class="page-item" data-th-classappend="*{last} ? 'disabled' : ''">
+          <a href="javascript:void(0);" class="page-link"
+             data-th-attr="pageIndex=${page.number} + 1" aria-label="Next">
+            <span aria-hidden="true">下一页</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--引用定义好的页尾模板:copyright-->
+  <div th:include="footer :: copyright (2011,2017)"></div>
+</div>
+</body>
+</html>
