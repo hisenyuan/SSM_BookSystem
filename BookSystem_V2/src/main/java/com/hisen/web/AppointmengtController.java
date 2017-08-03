@@ -2,6 +2,7 @@ package com.hisen.web;
 
 import com.alibaba.fastjson.JSON;
 import com.hisen.dao.form.AppointmentForm;
+import com.hisen.entity.Appointment;
 import com.hisen.service.AppointmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,10 +28,6 @@ public class AppointmengtController {
    * 借书的一个小功能
    * 本地测试成功，暂时不想写页面
    * localhost:8080/V2/appointment/appoint/103/20080808/20
-   * @param bookId
-   * @param userNumber
-   * @param holdDay
-   * @return
    */
   @RequestMapping(value = "/appoint/{bookId}/{userNumber}/{holdDay}", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
   @ResponseBody
@@ -43,6 +40,19 @@ public class AppointmengtController {
     logger.info("借书入参 AppointmengtController >>>>> " + form.toString());
     int appoint = appointmentService.appoint(form);
     String s = JSON.toJSONString(appoint > 0 ? "借书成功" : "借书失败");
+    return s;
+  }
+
+  @RequestMapping(value = "/return/{bookId}/{userNumber}", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+  @ResponseBody
+  public String returnBook(@PathVariable("bookId") int bookId,
+      @PathVariable("userNumber") int userNumber) {
+    Appointment form = new Appointment();
+    form.setBookId(bookId);
+    form.setUserNumber(userNumber);
+    logger.info("还书书入参 AppointmengtController >>>>> " + form.toString());
+    int i = appointmentService.returnBook(form);
+    String s = JSON.toJSONString(i > 0 ? "还书成功" : "还书失败");
     return s;
   }
 }
