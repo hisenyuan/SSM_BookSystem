@@ -16,7 +16,7 @@
       <ul class="nav nav-tabs">
         <li class="active"><a href="/book/list">首页</a></li>
         <li><a th:href="@{/book/detail/1000}">图书具体信息</a></li>
-        <li><a th:href="@{/add.html}">添加图书信息</a></li>
+        <li><a th:href="@{/add.html}">添加图书</a></li>
         <li class="disabled"><a href="#">信息</a></li>
       </ul>
     </div>
@@ -51,37 +51,8 @@
     </div>
   </div>
 
-  <div class="row clearfix">
-    <div class="col-md-12 column">
-      <ul class="pagination pagination-lg">
-        <!-- 上一页 -->
-        <li class="page-item" data-th-classappend="*{first} ? 'disabled' : ''">
-          <a href="javascript:void(0);" class="page-link"
-             data-th-attr="pageIndex=${page.number} - 1" aria-label="Previous">
-            <span aria-hidden="true">上一页</span>
-          </a>
-        </li>
-
-        <!-- 迭代生成页码 -->
-        <li class="page-item" data-th-each="i : ${#numbers.sequence(1, page.totalPages)}"
-            data-th-classappend="${(page.number + 1) eq i} ? 'active' : ''">
-          <a class="page-link" data-th-attr="pageIndex=${i} - 1" href="javascript:void(0);">
-            <span data-th-text="${i}"></span>
-          </a>
-        </li>
-
-        <!-- 下一页 -->
-        <li class="page-item" data-th-classappend="*{last} ? 'disabled' : ''">
-          <a href="javascript:void(0);" class="page-link"
-             data-th-attr="pageIndex=${page.number} + 1" aria-label="Next">
-            <span aria-hidden="true">下一页</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
   <!--引用定义好的页尾模板:copyright-->
   <div th:include="footer :: copyright (2011,2017)"></div>
-</div>
+  </div>
 </body>
 </html>
