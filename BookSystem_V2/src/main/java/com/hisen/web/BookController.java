@@ -30,7 +30,7 @@ public class BookController {
   @RequestMapping(value = "/list", method = RequestMethod.GET)
   private String list(Model model) {
     List<Book> list = bookService.getList(0, 10);
-    model.addAttribute("list", list);
+    model.addAttribute("books", list);
     return "list";// WEB-INF/jsp/"list".jsp
   }
 
