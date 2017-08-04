@@ -3,12 +3,12 @@
       xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<div class="row clearfix" th:fragment="headercontext">
+<div class="row clearfix" th:fragment="headercontext (text)">
   <div class="col-md-12 column">
     <div class="page-header">
       <h1>
         HiSEN
-        <small>图书管理系统 - thymeleaf模版引擎 + bootstrap</small>
+        <small th:text="'图书管理系统 - '  + ${text}"></small>
       </h1>
     </div>
   </div>

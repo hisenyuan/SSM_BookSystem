@@ -10,24 +10,15 @@
 <body>
 <div class="container">
   <!--引用定义好的页尾模板:headercontext-->
-  <div th:include="header :: headercontext"></div>
+  <div th:include="header :: headercontext ('图书列表')"></div>
   <div class="row clearfix">
     <div class="col-md-12 column">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="<%=appPath%>/book/list">首页</a></li>
+        <li class="active"><a href="/book/list">首页</a></li>
         <li><a th:href="@{/book/detail/1000}">图书具体信息</a></li>
-        <li><a th:href="@{/add.jsp}">添加图书信息</a></li>
+        <li><a th:href="@{/add.html}">添加图书信息</a></li>
         <li class="disabled"><a href="#">信息</a></li>
       </ul>
-    </div>
-  </div>
-  <div class="row clearfix">
-    <div class="col-md-12 column">
-      <div class="page-header">
-        <h1>图书列表
-          <small>显示当前图书库存信息</small>
-        </h1>
-      </div>
     </div>
   </div>
   <div class="row clearfix">
