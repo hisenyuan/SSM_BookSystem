@@ -63,13 +63,16 @@ mysql> show tables;
 
 7. 完毕
 
-三、目录结构
+三、开发过程中的感想
+
+1. 目前aop没有具体的用处
+2. AOP可以用的地方：参数校验，错误拦截，日志记录
+3. 以后尽量少用jsp，不利于前后端分离（SOA：面向服务）
+4. 为了安全尽量把bean分开。入参：form、出参：VO、DAO层：DTO
+
+
+四、目录结构
 --
-目前aop没有具体的用处
-
-AOP可以用的地方：参数校验，错误拦截，日志记录
-
-以后尽量少用jsp，不利于前后端分离（SOA：面向服务）
 ```
 hisen@hisen-pc:~/IdeaProjects/SSM_BookSystem/BookSystem_V2/src$ tree
 .
