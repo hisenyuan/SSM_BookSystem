@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=0">
+  <title>Bootstrap 101 Template</title>
+  <!-- Bootstrap -->
+  <!-- 新 Bootstrap 核心 CSS 文件 -->
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+  <script src="../js/bookList.js"></script>
+</head>
+
+<body>
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="page-header">
+        <h1>
+          HiSEN
+          <small>图书管理系统 - by ssm基础框架</small>
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="../../book/book/list">首页</a></li>
+        <li><a href="../../book/detail/1000">图书具体信息</a></li>
+        <li><a href="../../add.jsp">添加图书信息</a></li>
+        <li class="disabled"><a href="#">信息</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="page-header">
+        <h1>图书列表
+          <small>显示当前图书库存信息</small>
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+          <th>图书编号</th>
+          <th>图书名字</th>
+          <th>图书数量</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <ul class="pagination pagination-lg">
+        <li><a href="#">Prev</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">Next</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+        </button>
+        <h4>
+          注意!
+        </h4> <strong>Warning!</strong> Best check yo self, you're not looking too good. <a
+          href="#" class="alert-link">alert link</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
