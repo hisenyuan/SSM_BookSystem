@@ -12,7 +12,7 @@
 
 ## 问题记录bookList.js
 ### 不显示数据，或者js报错
-请改js中的url连接：front/js/bookList.js
+请改front/js/bookList.js中的url链接为你的链接地址
 ### JavaScript跨域问题
 在做前后端分离的时候，前台js调用后台接口报错如下
 ```
