@@ -1,15 +1,16 @@
-一、说明
---
-由于后面的一些功能都是突发奇想
+## 项目介绍
+开发工具：intelliJ IDEA
 
-把目前了解的一些技术尽量用到里面去
+项目相关：maven-3.39、jdk-8、github
 
-可能会有点乱，但是里面都写了比较详细的注释
+相关框架：Spring-4.17、SpringMVC-4.17、Mybatis-3.30
 
-后期可能注释的文档会详细一点，之前没有注意到
+数 据 库：mysql(存放数据)、redis(缓存)
 
-二、通过命令行导入数据库
---
+模板引擎：thymeleaf
+
+
+## 通过命令行导入数据库
 1. 查看所有的数据库
 ```
 mysql> show databases;
@@ -63,16 +64,14 @@ mysql> show tables;
 
 7. 完毕
 
-三、开发过程中的感想
-
+## 开发过程中的感想
 1. 目前aop没有具体的用处
 2. AOP可以用的地方：参数校验，错误拦截，日志记录
 3. 以后尽量少用jsp，不利于前后端分离（SOA：面向服务）
 4. 为了安全尽量把bean分开。入参：form、出参：VO、DAO层：DTO
 
 
-四、目录结构
---
+## 目录结构
 ```
 hisen@hisen-pc:~/IdeaProjects/SSM_BookSystem/BookSystem_V2/src$ tree
 .
