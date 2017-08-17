@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+  <!-- 配置SpringMVC -->
+  <!-- 1.开启SpringMVC注解模式 -->
+  <!-- 简化配置：
+      (1)自动注册DefaultAnootationHandlerMapping,AnotationMethodHandlerAdapter
+      (2)提供一些列：数据绑定，数字和日期的format @NumberFormat, @DateTimeFormat, xml,json默认读写支持
+  -->
+  <mvc:annotation-driven />
+
+  <!-- 2.静态资源默认servlet配置
+      (1)加入对静态资源的处理：js,gif,png
+      (2)允许使用"/"做整体映射
+   -->
+  <mvc:default-servlet-handler/>
+
+  <!-- 3.配置jsp 显示ViewResolver 使用：thymeleaf 模版引擎-->
+  <bean id="templateResolver"
+    class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
+    <property name="prefix" value="/WEB-INF/templates/"/>
+    <property name="suffix" value=".html"/>
+    <property name="templateMode" value="HTML5"/>
+    <!-- 缓存-->
+    <property name="cacheable" value="false"/>
+  </bean>
+  <bean id="templateEngine"
+    class="org.thymeleaf.spring4.SpringTemplateEngine">
+    <property name="templateResolver" ref="templateResolver"/>
+  </bean>
+  <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+    <property name="templateEngine" ref="templateEngine"/>
+    <property name="order" value="1"/>
+    <property name="characterEncoding" value="UTF-8"/>
+  </bean>
+
+  <!-- 4.扫描web相关的bean -->
+  <context:component-scan base-package="com.hisen.web" />
+</beans>

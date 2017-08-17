@@ -17,13 +17,14 @@
 <body>
 <div class="container">
   <!--引用定义好的页尾模板:headercontext-->
-  <div th:include="header :: headercontext"></div>
+  <div th:include="header :: headercontext ('详细信息')"></div>
 
   <div class="row clearfix">
     <div class="col-md-12 column">
       <ul class="nav nav-tabs">
         <li><a th:href="@{/book/list}">首页</a></li>
         <li class="active"><a th:href="@{/book/detail/1003}">图书具体信息</a></li>
+        <li><a th:href="@{/add.html}">添加图书</a></li>
         <li class="disabled"><a href="#">信息</a></li>
       </ul>
     </div>

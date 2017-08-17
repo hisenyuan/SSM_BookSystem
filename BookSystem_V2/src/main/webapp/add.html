@@ -1,32 +1,77 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>添加图书</title>
-  <!-- 引入 Bootstrap -->
-  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
-  <script src="https://code.jquery.com/jquery.js"></script>
+    <title>添加图书</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- 引入 Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="row clearfix">
-  <div class="col-md-12 column">
-    <form role="form" id="add" th:action="@{/book/add}" th:method="post" th:object="${Book}" >
-      <div class="form-group">
-        <label>图书ID</label><input class="form-control" type="text" th:field="*{bookId}"/>
-      </div>
-      <div class="form-group">
-        <label>图书名字</label><input class="form-control" type="text" th:field="*{name}" />
-      </div>
-      <div class="form-group">
-        <label>图书描述</label><input class="form-control" type="text" th:field="*{detail}" />
-      </div>
-      <div class="form-group">
-        <label>图书数量</label><input class="form-control" type="text" th:field="*{number}" />
-      </div>
-      <button class="btn btn-default" id="sub" type="submit" value="Approve Request">Submit</button>
-    </form>
-  </div>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    HiSEN
+                    <small>图书管理系统V2 - 添加图书</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <ul class="nav nav-tabs">
+                <li><a href="/book/list">首页</a></li>
+                <li><a href="/book/detail/1000">图书具体信息</a></li>
+                <li class="active"><a href="/add.html">添加图书</a></li>
+                <li class="disabled"><a href="#">信息</a></li>
+            </ul>
+        </div>
+    </div>
+    <br />
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <form role="form" id="add" method="post" action="/book/add" accept-charset="utf-8">
+                <div class="form-group">
+                    <label>图书ID</label><input class="form-control" name="bookId"/>
+                </div>
+                <div class="form-group">
+                    <label>图书名字</label><input class="form-control" name="name"/>
+                </div>
+                <div class="form-group">
+                    <label>图书描述</label><input class="form-control" name="detail"/>
+                </div>
+                <div class="form-group">
+                    <label>图书数量</label><input class="form-control" name="number"/>
+                </div>
+                <button class="btn btn-default" id="sub">Submit</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+  function list() {
+    window.location.href="/book/list";
+  }
+  $('#warning').css('display', 'none');
+  var frm = $('#add');
+  frm.submit(function (ev) {
+    $.ajax({
+      type: frm.attr('method'),
+      url: frm.attr('action'),
+      data: frm.serialize(),
+      success:function(data) {
+        list();
+      },
+      error:function(data){
+        //alert("添加失败");
+      }
+    });
+    ev.preventDefault();
+  });
+</script>
 </body>
 </html>
