@@ -27,13 +27,13 @@ public class EncodeDecodeJWT {
     map.put("alg", "HS256");
     map.put("typ", "JWT");
     long exp = System.currentTimeMillis() + maxAge;
-    String token = null;//密钥
+    String token = null;
     try {
       token = JWT.create()
           .withHeader(map)//header
           .withClaim(PAYLOAD, jsonString)//存放的内容 json
           .withClaim(EXP, new DateTime(exp).toDate())//超时时间
-          .sign(Algorithm.HMAC256(SECRET));
+          .sign(Algorithm.HMAC256(SECRET));//密钥
     } catch (UnsupportedEncodingException e) {
       e.printStackTrace();
     }
