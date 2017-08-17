@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>添加图书</title>
+  <!-- 引入 Bootstrap -->
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+<div class="row clearfix">
+  <div class="col-md-12 column">
+    <form role="form" id="add" th:action="@{/book/add}" th:method="post" th:object="${Book}" >
+      <div class="form-group">
+        <label>图书ID</label><input class="form-control" type="text" th:field="*{bookId}"/>
+      </div>
+      <div class="form-group">
+        <label>图书名字</label><input class="form-control" type="text" th:field="*{name}" />
+      </div>
+      <div class="form-group">
+        <label>图书描述</label><input class="form-control" type="text" th:field="*{detail}" />
+      </div>
+      <div class="form-group">
+        <label>图书数量</label><input class="form-control" type="text" th:field="*{number}" />
+      </div>
+      <button class="btn btn-default" id="sub" type="submit" value="Approve Request">Submit</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
