@@ -9,14 +9,15 @@ public class TestToken {
 
   public static void main(String[] args) {
     String sign = sign();
-    System.out.printf("jwt sign:%s\n",sign);
+    System.out.printf("jwt sign:%s\n", sign);
     User user = unsign(sign);
-    System.out.printf("jwt unsign:%s\n",user);
+    System.out.printf("jwt unsign:%s\n", user);
 
   }
 
   /**
    * jwt - 生成token
+   *
    * @return 返回token
    */
   public static String sign() {
@@ -31,6 +32,7 @@ public class TestToken {
 
   /**
    * jwt - 解密token
+   *
    * @param token jwt-token
    * @return 解密后还原的内容
    */
