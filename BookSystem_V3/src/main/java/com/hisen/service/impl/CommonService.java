@@ -10,6 +10,8 @@ public interface CommonService {
 
   /**
    * 登录
+   * @param user
+   * @return 返回符合条件的记录条数，为1的时候登录成功
    */
-  public void login(User user);
+  public int login(User user);
 }
