@@ -191,6 +191,12 @@
       <artifactId>junit</artifactId>
       <version>4.12</version>
     </dependency>
+    <!-- jwt -->
+    <dependency>
+      <groupId>com.auth0</groupId>
+      <artifactId>java-jwt</artifactId>
+      <version>3.2.0</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>BookSystem_V3</finalName>
