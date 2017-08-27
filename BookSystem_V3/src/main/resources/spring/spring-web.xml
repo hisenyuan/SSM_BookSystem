@@ -8,7 +8,7 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/mvc
-    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
   <!-- 配置SpringMVC -->
   <!-- 1.开启SpringMVC注解模式 -->
   <!-- 简化配置：
@@ -23,25 +23,36 @@
    -->
   <mvc:default-servlet-handler/>
 
-  <!-- 3.配置jsp 显示ViewResolver 使用：thymeleaf 模版引擎-->
-  <bean id="templateResolver"
-    class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
-    <property name="prefix" value="/WEB-INF/templates/"/>
-    <property name="suffix" value=".html"/>
-    <property name="templateMode" value="HTML5"/>
-    <!-- 缓存-->
-    <property name="cacheable" value="false"/>
-  </bean>
-  <bean id="templateEngine"
-    class="org.thymeleaf.spring4.SpringTemplateEngine">
-    <property name="templateResolver" ref="templateResolver"/>
-  </bean>
-  <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
-    <property name="templateEngine" ref="templateEngine"/>
-    <property name="order" value="1"/>
-    <property name="characterEncoding" value="UTF-8"/>
+  <!-- 3.配置jsp 显示ViewResolver -->
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+    <property name="prefix" value="/WEB-INF/jsp/" />
+    <property name="suffix" value=".jsp" />
   </bean>
 
   <!-- 4.扫描web相关的bean -->
-  <context:component-scan base-package="com.hisen.web" />
+  <context:component-scan base-package="com.hisen.controller" />
+
+  <!--拦截器-->
+  <mvc:interceptors>
+    <mvc:interceptor>
+      <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->
+      <mvc:mapping path="/**" />
+      <!-- /register 和 /login 不需要拦截-->
+      <!--<mvc:exclude-mapping path="/register" />-->
+      <!--spring-mvc-3.2.xsd 下面才不会报错-->
+      <!--防止静态文件被拦截-->
+      <mvc:exclude-mapping path="/**/fonts/*"/>
+      <mvc:exclude-mapping path="/**/*.css"/>
+      <mvc:exclude-mapping path="/**/*.js"/>
+      <mvc:exclude-mapping path="/**/*.png"/>
+      <mvc:exclude-mapping path="/**/*.gif"/>
+      <mvc:exclude-mapping path="/**/*.jpg"/>
+      <mvc:exclude-mapping path="/**/*.jpeg"/>
+      <mvc:exclude-mapping path="/**/*login*"/>
+      <mvc:exclude-mapping path="/**/*register.html"/>
+      <bean class="com.hisen.filter.JWTCheckInterceptor"></bean>
+    </mvc:interceptor>
+    <!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 -->
+  </mvc:interceptors>
 </beans>
