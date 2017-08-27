@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>登录 - 图书系统</title>
+  <!-- 新 Bootstrap 核心 CSS 文件 -->
+  <link href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <!--引入百度的cdn-->
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="http://apps.bdimg.com/libs/jquery.cookie/1.4.1/jquery.cookie.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <form class="form-horizontal" role="form" id="form" method="post">
+        <div class="form-group">
+          <label>账号</label><input class="form-control" name="name"/>
+        </div>
+        <div class="form-group">
+          <label>密码</label><input type="password" class="form-control" name="pwd"/>
+        </div>
+        <button class="btn btn-default" id="sub">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+<script src="../js/login.js"></script>
+</html>
