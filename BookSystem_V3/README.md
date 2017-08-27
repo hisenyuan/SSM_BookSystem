@@ -9,6 +9,14 @@ JWT认证流程:
 3. jwt过滤器会校验token解密之后的name是否和用户名相同,相同则放行
 4. 完成(后续可能需要加上token刷新的动作)
 
+### 测试方法
+1. 打开 http://localhost:8080/font/htmml/login.html
+2. 账号/密码:hisen/hisen
+3. F12控制台会打印相关token(token有效期一个小时)
+4. 打开 http://localhost:8080/font/htmml/register.html
+5. 随便填写,提交
+6. 有response返回成功,说明ok
+
 ## 前后分离
 目前是全部按这个逻辑去做
 
