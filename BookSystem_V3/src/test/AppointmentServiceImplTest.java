@@ -1,4 +1,4 @@
-import com.hisen.dao.form.AppointmentForm;
+import com.hisen.bean.request.AppointmentRequest;
 import com.hisen.service.AppointmentService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class AppointmentServiceImplTest extends BaseTest {
    */
   @Test
   public void insertApponit() {
-    AppointmentForm form = new AppointmentForm();
+    AppointmentRequest form = new AppointmentRequest();
     form.setHoldDay("10");
     form.setBookId(103);
     form.setUserNumber(20080808);

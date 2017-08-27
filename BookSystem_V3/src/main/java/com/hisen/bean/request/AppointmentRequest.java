@@ -1,11 +1,12 @@
-package com.hisen.dao.form;
+package com.hisen.bean.request;
 
-import com.hisen.entity.Appointment;
+import com.hisen.bean.entity.Appointment;
 
 /**
- * Created by hisenyuan on 2017/8/2 at 10:54.
+ * Created by hisen on 17-8-27.
+ * E-mail: hisenyuan@gmail.com
  */
-public class AppointmentForm extends Appointment {
+public class AppointmentRequest extends Appointment{
   private String holdDay;
 
   public String getHoldDay() {
@@ -18,7 +19,7 @@ public class AppointmentForm extends Appointment {
 
   @Override
   public String toString() {
-    return "AppointmentForm{" +
+    return "AppointmentRequest{" +
         "holdDay='" + holdDay + '\'' +
         '}';
   }

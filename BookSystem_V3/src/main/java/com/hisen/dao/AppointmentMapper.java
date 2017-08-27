@@ -1,7 +1,7 @@
 package com.hisen.dao;
 
-import com.hisen.entity.Appointment;
-import com.hisen.entity.AppointmentExample;
+import com.hisen.bean.entity.Appointment;
+import com.hisen.bean.entity.AppointmentExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

@@ -2,12 +2,12 @@ package com.hisen.service.impl;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import com.hisen.bean.request.AppointmentRequest;
 import com.hisen.dao.AppointmentMapper;
 import com.hisen.dao.BookDao;
-import com.hisen.dao.form.AppointmentForm;
-import com.hisen.entity.Appointment;
-import com.hisen.entity.AppointmentExample;
-import com.hisen.entity.Book;
+import com.hisen.bean.entity.Appointment;
+import com.hisen.bean.entity.AppointmentExample;
+import com.hisen.bean.entity.Book;
 import com.hisen.service.AppointmentService;
 import java.util.List;
 import org.joda.time.DateTime;
@@ -35,10 +35,10 @@ public class AppointmentServiceImpl implements AppointmentService {
    */
   //如果发生了异常，就进行回滚
   @Transactional(rollbackFor = {Exception.class})
-  public int appoint(AppointmentForm record) {
+  public int appoint(AppointmentRequest record) {
     //利用google guava判空
-    checkNotNull(record.getUserNumber(), "用户号不能为空");
-    checkNotNull(record.getBookId(), "图书编号不能为空");
+    checkNotNull(record.getUserNumber(), "预约 - 用户号不能为空");
+    checkNotNull(record.getBookId(), "预约 - 图书编号不能为空");
     //利用joda-time生成时间，并且计算时间
     DateTime dt = new DateTime();
     record.setAppointmentTime(dt.toDate());

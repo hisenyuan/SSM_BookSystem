@@ -1,8 +1,8 @@
-package com.hisen.web;
+package com.hisen.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.hisen.dao.form.AppointmentForm;
-import com.hisen.entity.Appointment;
+import com.hisen.bean.request.AppointmentRequest;
+import com.hisen.bean.entity.Appointment;
 import com.hisen.service.AppointmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +33,7 @@ public class AppointmengtController {
   @ResponseBody
   public String appoint(@PathVariable("bookId") int bookId,
       @PathVariable("userNumber") int userNumber, @PathVariable("holdDay") String holdDay) {
-    AppointmentForm form = new AppointmentForm();
+    AppointmentRequest form = new AppointmentRequest();
     form.setBookId(bookId);
     form.setUserNumber(userNumber);
     form.setHoldDay(holdDay);

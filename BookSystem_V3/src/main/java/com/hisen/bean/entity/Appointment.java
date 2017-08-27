@@ -1,4 +1,4 @@
-package com.hisen.entity;
+package com.hisen.bean.entity;
 
 import java.util.Date;
 
