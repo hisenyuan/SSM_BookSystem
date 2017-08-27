@@ -14,7 +14,7 @@
       password="hisen"
       userId="root"/>
     <!--生成Model(实体类，与数据库字段对应的bean)类存放位置-->
-    <javaModelGenerator targetPackage="com.hisen.entity" targetProject="src/main/java">
+    <javaModelGenerator targetPackage="com.hisen.bean.entity" targetProject="src/main/java">
       <property name="enableSubPackages" value="true"/>
       <property name="trimStrings" value="true"/>
     </javaModelGenerator>
