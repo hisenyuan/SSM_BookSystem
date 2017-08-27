@@ -1,14 +1,18 @@
-## 说明
-前端、后端分离
+## JWT认证
+目前已经改进了相关代码
 
-暂时把前端放在webapp/front下
+添加springMVC过滤器,每次对jwt token进行检查
 
-调用的时候直接进页面:[http://localhost:8081/front/html/bookList.html](http://localhost:8081/front/html/bookList.html)
+JWT认证流程:
+1. 用户登录成功,生成token,返回一个对象(包含token,用户名)
+2. 每次请求都带上这个对象(通过js存储在电脑)
+3. jwt过滤器会校验token解密之后的name是否和用户名相同,相同则放行
+4. 完成(后续可能需要加上token刷新的动作)
 
-### 后期实现
-前端：A容器tomcat [http://localhost:8080](http://localhost:8080)
+## 前后分离
+目前是全部按这个逻辑去做
 
-后端：B容器tomcat [http://localhost:8081](http://localhost:8081)
+前台靠ajax去调用
 
 ## 问题记录bookList.js
 ### 不显示数据，或者js报错
