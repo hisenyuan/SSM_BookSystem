@@ -66,3 +66,94 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
     </mvc:interceptor>
   </mvc:interceptors>
 ```
+
+## 目录结构
+```
+├── java
+│   └── com
+│       └── hisen
+│           ├── aop
+│           │   ├── GetMethodInfoHandler.java
+│           │   └── TimeHandler.java
+│           ├── bean
+│           │   ├── contains
+│           │   │   └── CommonEnum.java
+│           │   ├── dto
+│           │   │   └── UserInfoLoginDto.java
+│           │   ├── entity
+│           │   │   ├── AppointmentExample.java
+│           │   │   ├── Appointment.java
+│           │   │   ├── Book.java
+│           │   │   ├── JWTInfo.java
+│           │   │   ├── UserInfoExample.java
+│           │   │   └── UserInfo.java
+│           │   ├── request
+│           │   │   ├── AppointmentRequest.java
+│           │   │   ├── CommonRequest.java
+│           │   │   └── UserLoginRequest.java
+│           │   └── response
+│           │       ├── CommonResponse.java
+│           │       └── UserLoginResponse.java
+│           ├── common
+│           │   ├── CookieUtil.java
+│           │   ├── JWTUtil.java
+│           │   └── MD5Util.java
+│           ├── controller
+│           │   ├── AppointmengtController.java
+│           │   ├── BookController.java
+│           │   └── UserInfoController.java
+│           ├── dao
+│           │   ├── AppointmentMapper.java
+│           │   ├── BookDao.java
+│           │   ├── RedisCache.java
+│           │   ├── RedisCacheTransfer.java
+│           │   ├── sql
+│           │   │   ├── booksystem_appointment.sql
+│           │   │   ├── booksystem_book.sql
+│           │   │   ├── booksystem_user_info.sql
+│           │   │   └── booksystem_user.sql
+│           │   └── UserInfoMapper.java
+│           ├── filter
+│           │   ├── CorsFilter.java
+│           │   └── JWTCheckInterceptor.java
+│           └── service
+│               ├── AppointmentService.java
+│               ├── BookService.java
+│               ├── impl
+│               │   ├── AppointmentServiceImpl.java
+│               │   ├── BookServiceImpl.java
+│               │   └── UserInfoServiceImpl.java
+│               └── UserInfoService.java
+├── resources
+│   ├── generatorConfig.xml
+│   ├── jdbc.properties
+│   ├── logback.xml
+│   ├── mapper
+│   │   ├── AppointmentMapper.xml
+│   │   ├── BookMapper.xml
+│   │   └── UserInfoMapper.xml
+│   ├── mybatis-config.xml
+│   ├── redis.properties
+│   └── spring
+│       ├── spring-aop.xml
+│       ├── spring-dao.xml
+│       ├── spring-service.xml
+│       └── spring-web.xml
+└── webapp
+    ├── front
+    │   ├── css
+    │   ├── html
+    │   │   ├── bookList.html
+    │   │   ├── login.html
+    │   │   └── register.html
+    │   └── js
+    │       ├── bookList.js
+    │       ├── demo.js
+    │       ├── login.js
+    │       └── register.js
+    ├── index.jsp
+    └── WEB-INF
+        └── web.xml
+
+26 directories, 59 files
+```
