@@ -1,6 +1,6 @@
 package com.hisen.service;
 
-import com.hisen.entity.Book;
+import com.hisen.bean.entity.Book;
 import java.util.List;
 
 /**

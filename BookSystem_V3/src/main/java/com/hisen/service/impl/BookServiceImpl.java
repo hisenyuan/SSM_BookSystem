@@ -1,7 +1,7 @@
 package com.hisen.service.impl;
 
 import com.hisen.dao.BookDao;
-import com.hisen.entity.Book;
+import com.hisen.bean.entity.Book;
 import com.hisen.service.BookService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
