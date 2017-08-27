@@ -27,3 +27,34 @@ Origin 'null' is therefore not allowed access. The response had HTTP status code
 这是由于跨域的问题造成。
 
 解决方案参考：[解决：Access-Control-Allow-Origin与跨域](http://blog.csdn.net/wo541075754/article/details/50696841)
+
+## 其他问题
+### springMVC拦截器
+1. 不识别 <mvc:exclude-mapping />标签,解决办法:
+```
+http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+改为3.2+
+http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+```
+2. 发现了以元素 'mvc:exclude-mapping' 开头的无效内容,顺序问题-解决如下:
+```
+<!--拦截器-->
+  <mvc:interceptors>
+    <mvc:interceptor>
+      <mvc:exclude-mapping path="/login"/>
+      <mvc:mapping path="/**" />
+      <bean class="com.hisen.filter.JWTCheckInterceptor"></bean>
+    </mvc:interceptor>
+  </mvc:interceptors>
+  
+不能mvc:exclude-mapping开头,改为
+
+<!--拦截器-->
+  <mvc:interceptors>
+    <mvc:interceptor>
+      <mvc:mapping path="/**" />
+      <mvc:exclude-mapping path="/login"/>
+      <bean class="com.hisen.filter.JWTCheckInterceptor"></bean>
+    </mvc:interceptor>
+  </mvc:interceptors>
+```
