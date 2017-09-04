@@ -10,10 +10,10 @@ JWT认证流程:
 4. 完成(后续可能需要加上token刷新的动作)
 
 ### 测试方法
-1. 打开 http://localhost:8080/font/htmml/login.html
+1. 打开 http://localhost:8183/front/html/login.html (端口改为你的)
 2. 账号/密码:hisen/hisen
 3. F12控制台会打印相关token(token有效期一个小时)
-4. 打开 http://localhost:8080/font/htmml/register.html
+4. 打开 http://localhost:8183/front/html/register.html (端口改为你的)
 5. 随便填写,提交
 6. 有response返回成功,说明ok
 
