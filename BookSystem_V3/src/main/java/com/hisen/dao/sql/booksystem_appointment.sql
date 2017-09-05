@@ -1,1 +1,0 @@
-INSERT INTO booksystem.appointment (book_id, user_number, appointment_time, expect_return_time, real_return_time, status) VALUES (103, 20080808, '2017-08-02 11:37:24', '2017-08-02 11:37:24', '2017-08-03 18:22:32', 1);

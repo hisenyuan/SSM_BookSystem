@@ -1,2 +1,0 @@
-INSERT INTO booksystem.user (user_name, user_phone, user_address, user_number) VALUES ('HiSEN', '13820080808', '1234', '20080808');
-INSERT INTO booksystem.user (user_name, user_phone, user_address, user_number) VALUES ('阿星', '13820080001', '北京市朝阳区', '20080001');
