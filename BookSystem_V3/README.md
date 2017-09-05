@@ -22,6 +22,11 @@ JWT认证流程:
 
 前台靠ajax去调用,可能还不完善,前段太多东西不熟悉
 
+## 数据库问题
+目前数据库文件存放在:com/hisen/dao/sql/booksystem.sql
+
+本地建立一个名为booksystem的数据库,然后执行这个sql即可
+
 ## 问题记录bookList.js
 ### 不显示数据，或者js报错
 请改front/js/bookList.js中的url链接为你的链接地址
@@ -35,6 +40,12 @@ Origin 'null' is therefore not allowed access. The response had HTTP status code
 这是由于跨域的问题造成。
 
 解决方案参考：[解决：Access-Control-Allow-Origin与跨域](http://blog.csdn.net/wo541075754/article/details/50696841)
+
+### mysql命令行导出整个数据库(包括所有表结构和数据)
+```
+hisen@hisen-pc:~$ mysqldump -h 127.0.0.1 -u root -p booksystem > booksystem.sql
+```
+PS:直接在命令行执行即可,无需进入mysql交互界面
 
 ## 其他问题
 ### springMVC拦截器
